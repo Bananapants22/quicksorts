@@ -21,6 +21,8 @@ def quicksort(a, low, high):
         quicksort(a, low, p)
         quicksort(a, p+1, high)
 
+'''
 a = [2,5,1,4,3]
 quicksort(a, 0, len(a)-1)
 print(a)
+'''
