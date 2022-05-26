@@ -1,20 +1,28 @@
 def partition(a, low, high):
-    pivot = a[low]
+    pivot = a[(high+low)//2]
 
-    i = low - 1
+    i = low
+    j = high
 
-    for j in range(low, high):
-        if a[j] < pivot:
+    while True:
+        while a[i] < pivot:
             i += 1
-            a[i], a[j] = a[j], a[i]
-    
-    a[i+1], a[high] = a[high], a[i+1]
+        while a[j] > pivot:
+            j -= 1
+        if i >= j:
+            return j
 
-    return (i+1)
+        a[i], a[j] = a[j],a[i]
 
 def quicksort(a, low, high):
     if low < high:
         p = partition(a, low, high)
 
-        quicksort(a, low, p-1)
+        quicksort(a, low, p)
         quicksort(a, p+1, high)
+
+'''
+a = [2,5,1,4,3]
+quicksort(a, 0, len(a)-1)
+print(a)
+'''
