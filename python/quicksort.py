@@ -25,6 +25,7 @@ def quicksort(a: list, low: int, high: int):
     if low < high:
         p = partition(a, low, high)
 
-        # Recursively quicksort the lists on either side of the pivot at index p
+        # Recursively quicksort the lists on either side of the pivot 
+        # at index p
         quicksort(a, low, p)
         quicksort(a, p+1, high)
