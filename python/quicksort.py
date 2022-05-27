@@ -1,6 +1,11 @@
-def partition(a, low, high):
-    pivot = a[(high+low)//2]
+def partition(a: list, low: int, high: int) -> int:
+    """Select a pivot, then move all values lower than the pivot left of it,
+    and all values greater than it to the right.
+    Once both pointers are at the same point, return that point (the pivot).
+    """
+    pivot = a[(high+low) // 2] # Select the middle value as the pivot
 
+    # Initialise both indexes at either end of the list
     i = low
     j = high
 
@@ -10,19 +15,16 @@ def partition(a, low, high):
         while a[j] > pivot:
             j -= 1
         if i >= j:
-            return j
+            return j # j in this case is the index of the pivot
+    
+    a[i], a[j] = a[j], a[i] # Swap the values at the indexes
 
-        a[i], a[j] = a[j],a[i]
 
-def quicksort(a, low, high):
+def quicksort(a: list, low: int, high: int):
+    """Quicksort the list a."""
     if low < high:
         p = partition(a, low, high)
 
+        # Recursively quicksort the lists on either side of the pivot at index p
         quicksort(a, low, p)
         quicksort(a, p+1, high)
-
-'''
-a = [2,5,1,4,3]
-quicksort(a, 0, len(a)-1)
-print(a)
-'''
